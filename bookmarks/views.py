@@ -70,7 +70,7 @@ def register_page(request):
 				email=form.cleaned_data['email']
 				)
 			return HttpResponseRedirect('/register/success/')
-	else:
+	elif request.method == 'GET': #added 
 		form=RegistrationForm()
 		variables=RequestContext(request,{
 			'form':form
@@ -109,7 +109,7 @@ def bookmark_save_page(request):
 			return HttpResponseRedirect(
 				'/user/%s/'%request.user.username
 				)
-	else:
+	elif request.method == 'GET':
 		form=BookmarkSaveForm()
 		variables = RequestContext(request,
 			{
